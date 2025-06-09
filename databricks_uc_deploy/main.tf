@@ -59,7 +59,7 @@ data "azuread_group" "DeveloperGroups" {
     display_name = each.value
 }
 
-data "azurerm_log_analytics_workspace" "BMILawsWorkspace" {
+data "azurerm_log_analytics_workspace" "LawsWorkspace" {
     provider            = azurerm.infrastructure
     name                = var.log_analytics_workspace_name
     resource_group_name = var.log_analytics_workspace_resource_group
@@ -185,7 +185,7 @@ locals {
 resource "azurerm_monitor_diagnostic_setting" DatabricksMonitoring {
     name                       = "${azurerm_databricks_workspace.DatabricksWorkspace.name}-diagnostics"
     target_resource_id         = azurerm_databricks_workspace.DatabricksWorkspace.id
-    log_analytics_workspace_id = data.azurerm_log_analytics_workspace.BMILawsWorkspace.id
+    log_analytics_workspace_id = data.azurerm_log_analytics_workspace.LawsWorkspace.id
     dynamic "enabled_log" {
       for_each = toset(local.enabled_logs)
       content {
