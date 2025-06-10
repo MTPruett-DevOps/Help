@@ -20,7 +20,7 @@ resource "databricks_metastore_assignment" "metastore_assignment" {
 
 data "databricks_group" "devops_group" {
   display_name = "DevOps"
-  external_id  = "8edc101e-7511-4202-bdea-0c5aece985c7"
+  external_id  = "1a01a101-1a01-a1a1-0111-1a0101a0a1a"
 }
 
 data "databricks_group" "admin_groups" {
